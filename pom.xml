@@ -10,6 +10,9 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>spring-cloud-kid-001</module>
+        <module>spring-cloud-kid-002</module>
+        <module>spring-cloud-kind-003</module>
+        <module>spring-cloud-kid-003</module>
     </modules>
 
     <parent>
