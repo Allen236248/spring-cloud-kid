@@ -13,6 +13,7 @@
         <module>spring-cloud-kid-002</module>
         <module>spring-cloud-kind-003</module>
         <module>spring-cloud-kid-003</module>
+        <module>spring-cloud-kid-zuul</module>
     </modules>
 
     <parent>
