@@ -25,9 +25,9 @@ public class ProducerFallback implements FallbackProvider {
 
     @Override
     public ClientHttpResponse fallbackResponse(String route, Throwable cause) {
-        if(cause != null && cause.getCause() != null) {
-            String causeMsg = cause.getCause().getMessage();
-            LOGGER.error("降级收到来自" + getRoute() + "的服务异常：" + causeMsg);
+        if(cause != null) {
+            String causeMsg = cause.getMessage();
+            LOGGER.error("降级收到来自" + route + "的服务异常：" + cause);
             return new ThrowableClientHttpResponse(causeMsg);
         }
         return null;

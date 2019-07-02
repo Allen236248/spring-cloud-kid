@@ -1,5 +1,7 @@
 package com.allen.spring.cloud.producer.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,11 +13,19 @@ import java.util.List;
 @RestController
 public class HelloController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(HelloController.class);
+
     @Autowired
     private DiscoveryClient discoveryClient;
 
     @RequestMapping("/hello")
     public String hello(@RequestParam("name") String name) {
+        LOGGER.info("request parameter is : " + name);
+        try {
+            Thread.sleep(300000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return "Hello " + name + ", this is the first message.";
     }
 
