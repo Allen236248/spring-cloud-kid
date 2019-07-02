@@ -9,10 +9,10 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>spring-cloud-kid-001</module>
-        <module>spring-cloud-kid-002</module>
-        <module>spring-cloud-kind-003</module>
-        <module>spring-cloud-kid-003</module>
+        <module>spring-cloud-kid-eureka</module>
+        <module>spring-cloud-kid-producer</module>
+        <module>spring-cloud-kid-producer-feign</module>
+        <module>spring-cloud-kid-consumer</module>
         <module>spring-cloud-kid-zuul</module>
     </modules>
 
@@ -30,6 +30,11 @@
                 <version>Finchley.SR1</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.allen.spring.cloud</groupId>
+                <artifactId>spring-cloud-kid-producer-feign</artifactId>
+                <version>1.0-SNAPSHOT</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
