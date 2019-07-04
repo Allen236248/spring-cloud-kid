@@ -34,4 +34,10 @@ public class HelloController {
         return discoveryClient.getServices();
     }
 
+    @RequestMapping("/show_owner")
+    public String showOwner(@RequestParam(value = "owner", required = false) String owner) {
+        LOGGER.info("The owner is : " + owner);
+        return "The owner is : " + owner;
+    }
+
 }
