@@ -8,14 +8,14 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-public class Launcher extends SpringBootServletInitializer {
+public class ProducerLauncher extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(Launcher.class);
+        return builder.sources(ProducerLauncher.class);
     }
 
     public static void main(String...args) {
-        SpringApplication.run(Launcher.class, args);
+        SpringApplication.run(ProducerLauncher.class, args);
     }
 }

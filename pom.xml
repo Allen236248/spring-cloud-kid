@@ -15,6 +15,7 @@
         <module>spring-cloud-kid-consumer</module>
         <module>spring-cloud-kid-zuul</module>
         <module>spring-cloud-kid-zipkin</module>
+        <module>spring-cloud-kid-gateway</module>
     </modules>
 
     <parent>
