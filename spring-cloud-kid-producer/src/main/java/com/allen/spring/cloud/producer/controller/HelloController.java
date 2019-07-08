@@ -19,10 +19,10 @@ public class HelloController {
     private DiscoveryClient discoveryClient;
 
     @RequestMapping("/hello")
-    public String hello(@RequestParam("name") String name) {
+    public String hello(@RequestParam(value = "name", required = false) String name) {
         LOGGER.info("request parameter is : " + name);
         try {
-            Thread.sleep(300000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
