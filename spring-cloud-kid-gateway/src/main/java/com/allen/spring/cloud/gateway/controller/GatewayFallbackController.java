@@ -1,4 +1,4 @@
-package com.allen.spring.cloud.producer.controller;
+package com.allen.spring.cloud.gateway.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,33 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class HelloController {
+public class GatewayFallbackController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(HelloController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(GatewayFallbackController.class);
 
-    @Autowired
-    private DiscoveryClient discoveryClient;
-
-    @RequestMapping("/hello")
-    public String hello(@RequestParam("name") String name) {
-        LOGGER.info("request parameter is : " + name);
-        try {
-            Thread.sleep(300000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return "Hello " + name + ", this is the first message.";
-    }
-
-    @RequestMapping("/service_info")
-    public List<String> serviceInfo() {
-        return discoveryClient.getServices();
-    }
-
-    @RequestMapping("/show_owner")
-    public String showOwner(@RequestParam(value = "owner", required = false) String owner) {
-        LOGGER.info("The owner is : " + owner);
-        return "The owner is : " + owner;
+    @RequestMapping("/gateway_fallback")
+    public String gatewayFallback() {
+        return "Error";
     }
 
 }
