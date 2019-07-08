@@ -10,16 +10,16 @@ import java.util.List;
 @Service
 public class HelloServiceImpl implements HelloService {
 
-    @Autowired
-    private HelloFeign helloFeign;
+//    @Autowired
+//    private HelloFeign helloFeign;
 
     @Override
     public String hello(String name) {
-        return helloFeign.hello(name);
+        return null;//helloFeign.hello(name);
     }
 
     @Override
     public List<String> serviceInfo() {
-        return helloFeign.serviceInfo();
+        return null;//helloFeign.serviceInfo();
     }
 }

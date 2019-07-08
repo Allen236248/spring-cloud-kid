@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -14,6 +15,9 @@ public class HelloController {
     @Autowired
     private HelloService helloService;
 
+    @Autowired
+    private RestTemplate restTemplate;
+
     @RequestMapping("/hello_service_info")
     public String hello(@RequestParam("name") String name) {
         String res = helloService.hello(name);
@@ -22,6 +26,12 @@ public class HelloController {
             res += s;
         }
         return res;
+    }
+
+    @RequestMapping("/show_owner")
+    public String ribbonLoadBalance() {
+        String url = "http://spring-cloud-kid-producer/show_owner?owner=123";
+        return restTemplate.getForObject(url, String.class);
     }
 
 }
