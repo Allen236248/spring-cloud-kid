@@ -28,6 +28,11 @@ public class HelloController {
         return res;
     }
 
+    /**
+     * Ribbon可提供负载均衡；Feign也可以提供负载均衡
+     *
+     * @return
+     */
     @RequestMapping("/show_owner")
     public String ribbonLoadBalance() {
         String url = "http://spring-cloud-kid-producer/show_owner?owner=123";
