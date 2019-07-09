@@ -21,11 +21,6 @@ public class HelloController {
     @RequestMapping("/hello")
     public String hello(@RequestParam(value = "name", required = false) String name) {
         LOGGER.info("request parameter is : " + name);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         return "Hello " + name + ", this is the first message.";
     }
 

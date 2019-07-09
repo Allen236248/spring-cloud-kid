@@ -11,7 +11,6 @@
     <modules>
         <module>spring-cloud-kid-eureka</module>
         <module>spring-cloud-kid-producer</module>
-        <module>spring-cloud-kid-producer-feign</module>
         <module>spring-cloud-kid-consumer</module>
         <module>spring-cloud-kid-zuul</module>
         <module>spring-cloud-kid-zipkin</module>

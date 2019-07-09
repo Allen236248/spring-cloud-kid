@@ -1,6 +1,6 @@
-package com.allen.spring.cloud.producer.hystrix;
+package com.allen.spring.cloud.consumer.hystrix;
 
-import com.allen.spring.cloud.producer.feign.HelloFeign;
+import com.allen.spring.cloud.consumer.feign.HelloFeign;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestParam;
 
