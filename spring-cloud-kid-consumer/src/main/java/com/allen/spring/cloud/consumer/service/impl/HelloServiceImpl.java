@@ -1,6 +1,6 @@
 package com.allen.spring.cloud.consumer.service.impl;
 
-import com.allen.spring.cloud.consumer.feign.HelloFeign;
+import com.allen.spring.cloud.producer.feign.HelloFeign;
 import com.allen.spring.cloud.consumer.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

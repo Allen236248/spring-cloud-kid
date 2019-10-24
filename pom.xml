@@ -15,6 +15,7 @@
         <module>spring-cloud-kid-zuul</module>
         <module>spring-cloud-kid-zipkin</module>
         <module>spring-cloud-kid-gateway</module>
+        <module>spring-cloud-kid-producer-interface</module>
     </modules>
 
     <parent>
@@ -22,6 +23,10 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.3.RELEASE</version>
     </parent>
+
+    <properties>
+        <sck.producer.interface.version>1.0-SNAPSHOT</sck.producer.interface.version>
+    </properties>
 
     <dependencyManagement>
         <dependencies>
@@ -31,6 +36,11 @@
                 <version>Finchley.SR1</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.allen.spring.cloud</groupId>
+                <artifactId>spring-cloud-kid-producer-interface</artifactId>
+                <version>${sck.producer.interface.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -1,6 +1,6 @@
-package com.allen.cloud.producer.hystrix;
+package com.allen.spring.cloud.producer.hystrix;
 
-import com.allen.cloud.producer.feign.HelloFeign;
+import com.allen.spring.cloud.producer.feign.HelloFeign;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
