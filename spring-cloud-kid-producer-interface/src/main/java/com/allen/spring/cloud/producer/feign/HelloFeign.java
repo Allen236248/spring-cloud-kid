@@ -10,7 +10,6 @@ import java.util.List;
 /**
  * @FeignClient 需要指向的是服务提供者
  */
-//@Component
 //name:远程服务名，即：spring.application.name配置的名称
 @FeignClient(name = "spring-cloud-kid-producer", fallback = HelloHystrix.class)
 public interface HelloFeign {
