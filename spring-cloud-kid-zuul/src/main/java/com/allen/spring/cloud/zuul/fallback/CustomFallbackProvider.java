@@ -14,15 +14,23 @@ import java.io.IOException;
 import java.io.InputStream;
 
 @Component
-public class ProducerFallback implements FallbackProvider {
+public class CustomFallbackProvider implements FallbackProvider {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ProducerFallback.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomFallbackProvider.class);
 
     @Override
     public String getRoute() {
-        return "spring-cloud-kid-producer";
+        //指明熔断拦截哪个服务：指定某个route以实现该route访问出问题的熔断处理
+        return "spring-cloud-kid-consumer";
     }
 
+    /**
+     * 定制返回内容
+     *
+     * @param route
+     * @param cause
+     * @return
+     */
     @Override
     public ClientHttpResponse fallbackResponse(String route, Throwable cause) {
         if(cause != null) {
