@@ -2,17 +2,30 @@ package com.allen.spring.cloud.consumer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
 //@EnableHystrixDashboard
-//启用服务注册与发现
-@EnableDiscoveryClient
+/**
+ * 启用服务注册与发现
+ * Spring Cloud中discovery service有许多种实现（eureka、consul、zookeeper等等），
+ * @EnableDiscoveryClient基于spring-cloud-commons,
+ * @EnableEurekaClient基于spring-cloud-netflix。
+ * 如果选用的注册中心是eureka，那么就推荐@EnableEurekaClient
+ * 如果是其他的注册中心，那么推荐使用@EnableDiscoveryClient
+ */
+@EnableEurekaClient
 //启用feign进行远程调用。注意如果定义的Feign接口和启动类不在同一个包路径下，需要指定basePackages，表示Feign接口所在的包路径
+/**
+ * Feign + Hystrix 实现服务容错保护 EnableCircuitBreaker
+ * 断路器，不需要在主类使用@EnableCircuitBreaker，Feign已自动开启该功能
+ * 不需要在FeignClient的interface上使用 @HystrixCommand，已隐含 EnableFeignClients 负载均衡客户端
+ * EnableDiscoveryClient 服务发现注册
+ */
 @EnableFeignClients("com.allen.spring.cloud.producer")
 @ComponentScan({"com.allen.spring.cloud.consumer", "com.allen.spring.cloud.producer"})
 @SpringBootApplication
