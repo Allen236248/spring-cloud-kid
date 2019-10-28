@@ -13,21 +13,42 @@ public class AuthenticationFilter extends ZuulFilter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthenticationFilter.class);
 
+    /**
+     * 定义filter的类型，有pre、route、post、error四种
+     *
+     * @return
+     */
     @Override
     public String filterType() {
         return "pre";
     }
 
+    /**
+     * 定义filter的顺序，数字越小表示顺序越高，越先执行
+     *
+     * @return
+     */
     @Override
     public int filterOrder() {
         return 0;
     }
 
+    /**
+     * 表示是否需要执行该filter，true表示执行，false表示不执行
+     *
+     * @return
+     */
     @Override
     public boolean shouldFilter() {
         return true;
     }
 
+    /**
+     * filter需要执行的具体操作
+     *
+     * @return
+     * @throws ZuulException
+     */
     @Override
     public Object run() throws ZuulException {
         RequestContext context = RequestContext.getCurrentContext();
