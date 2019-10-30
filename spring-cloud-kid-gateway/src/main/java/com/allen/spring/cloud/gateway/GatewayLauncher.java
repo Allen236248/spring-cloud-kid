@@ -2,10 +2,8 @@ package com.allen.spring.cloud.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.gateway.route.RouteLocator;
-import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
-import org.springframework.context.annotation.Bean;
 
+//@EnableEurekaClient 为什么Spring Cloud Gateway可以不用此注解
 @SpringBootApplication
 public class GatewayLauncher {
 

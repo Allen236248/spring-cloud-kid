@@ -1,0 +1,69 @@
+
+# Tomcat端口
+server:
+  port: 9400
+
+###### 未接入注册中心的版本 ######
+#spring:
+#  application:
+#    name: spring-cloud-kid-gateway
+#  cloud:
+#    gateway:
+#      routes:
+#      - id: default-path-route
+#        uri: http://localhost:9100  # 请求gateway项目时候，请求会被转发到此地址。配置将请求转发到producer，注意最后不能有'/'
+#        predicates:
+#        - Path=/{path} # 请求http://localhost:9400/service_info转发到http://localhost:9000/service_info，/{path}为转发到的地址所需要的
+###### 未接入注册中心的版本 ######
+
+spring:
+  application:
+    name: spring-cloud-kid-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true # 是否与服务注册发现组件结合，通过serviceId转发到具体到服务实例。默认为false，设为true便开启通过注册中心，自动根据serviceId创建路由的功能。如果未配置route，则：http://localhost:9400/SPRING-CLOUD-KID-CONSUMER/hello_service_info?name=allen
+      #如果是http://localhost:9400/SPRING-CLOUD-KID-CONSUMER/hello_service_info?name=allen，将使用路由：CompositeDiscoveryClient_SPRING-CLOUD-KID-CONSUMER
+      #如果是http://localhost:9400/hello_service_info?name=allen将使用路由：add_request_parameter_route，且URL后的name参数值，将拼接在filters中定义的name参数值之前
+      routes:
+      #- id: add_request_parameter_route
+      - id: add_request_parameter_with_rate_limiter_and_hystrix_route
+        uri: http://localhost:9100
+        filters:
+        - AddRequestParameter=name, allen626020 #给每个匹配的请求添加上name=allen626020的参数和值
+        #- StripPrefix=1 #请求路径截取的功能，需要结合predicates的Path一起使用 如当请求http://localhost:9400/cloud/hello_service_info?name=allen，截取后为http://localhost:9400/hello_service_info?name=allen
+        - name: RequestRateLimiter
+          args:
+            redis-rate-limiter.replenishRate: 1 #允许用户每秒处理多少个请求
+            redis-rate-limiter.burstCapacity: 2 #令牌桶的容量，允许在一秒钟内完成的最大请求数
+            key-resolver: "#{@ipKeyResolver}" #使用SpEL按名称引用bean。见GatewayConfiguration.class
+        - Hystrix=CustomHystrixCommand #Gateway使用CustomHystrixCommand作为名称生成HystrixCommand对象来进行熔断管理
+#       - name: Hystrix #熔断过滤器
+#          args:
+#            name: fallbackcmd
+#            fallbackUri: forward:/gateway_fallback
+        predicates:
+        - Path=/**
+        - Method=GET
+  redis:  # Spring Redis配置
+    database: 0 #Redis数据库索引。默认为0
+    host: 10.10.50.120  #Redis服务器连接地址
+    port: 6379  #Redis服务器连接端口
+    password: #Redis服务器连接密码。默认为空
+
+
+# hystrix 信号量隔离，3秒后自动超时
+#hystrix.command.default.execution.isolation.strategy=SEMAPHORE
+#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=3000
+#hystrix.shareSecurityContext=true
+
+# 设置与Eureka Server交互的地址URL，查询服务和注册服务都需要依赖这个地址。默认是http://localhost:8761/eureka。多个地址用,分隔
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8800/eureka/
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
