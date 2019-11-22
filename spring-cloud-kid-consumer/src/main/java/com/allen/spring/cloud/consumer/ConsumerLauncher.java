@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 //@EnableHystrixDashboard
 /**
  * 启用服务注册与发现
- * Spring Cloud中discovery service有许多种实现（eureka、consul、zookeeper等等），
+ * Spring Cloud中服务注册与发现有许多种实现（eureka、consul、zookeeper等等），
  * @EnableDiscoveryClient基于spring-cloud-commons,
  * @EnableEurekaClient基于spring-cloud-netflix。
  * 如果选用的注册中心是eureka，那么就推荐@EnableEurekaClient
