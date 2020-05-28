@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -20,7 +22,14 @@ public class HelloController {
 
     @RequestMapping("/hello")
     public String hello(@RequestParam(value = "name", required = false) String name) {
-        LOGGER.info("request parameter is : " + name);
+        LOGGER.info(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        try {
+            //测试超时熔断及重试次数
+            Thread.sleep(2000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        LOGGER.info(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + " request parameter is : " + name);
         return "Hello " + name + ", this is the first message.";
     }
 
