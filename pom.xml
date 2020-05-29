@@ -8,6 +8,12 @@
     <artifactId>spring-cloud-kid</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.3.RELEASE</version>
+    </parent>
+
     <modules>
         <module>spring-cloud-kid-eureka</module>
         <module>spring-cloud-kid-producer</module>
@@ -16,13 +22,9 @@
         <module>spring-cloud-kid-zipkin</module>
         <module>spring-cloud-kid-gateway</module>
         <module>spring-cloud-kid-producer-interface</module>
+        <module>spring-cloud-kid-monitor</module>
+        <module>spring-cloud-kid-config</module>
     </modules>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.3.RELEASE</version>
-    </parent>
 
     <properties>
         <sck.producer.interface.version>1.0-SNAPSHOT</sck.producer.interface.version>

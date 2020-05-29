@@ -1,0 +1,10 @@
+http://localhost:9500/spring-config/dev
+http://localhost:9500/spring-config-dev.properties      返回   spring.hello: Hello, I am dev
+
+仓库中的配置文件会被转换成web接口，访问可以参照以下的规则：
+1、/{application}/{profile}[/{label}]
+2、/{application}-{profile}.yml
+3、/{label}/{application}-{profile}.yml/
+4、/{application}-{profile}.properties
+5、/{label}/{application}-{profile}.properties
+以spring-config-dev.properties为例子，它的application是spring-config，profile是dev。请求会根据填写的参数来选择读取对应的配置。
