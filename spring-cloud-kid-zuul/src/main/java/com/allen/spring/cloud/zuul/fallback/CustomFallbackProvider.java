@@ -20,8 +20,8 @@ public class CustomFallbackProvider implements FallbackProvider {
 
     @Override
     public String getRoute() {
-        //指明熔断拦截哪个服务：指定某个route以实现该route访问出问题的熔断处理
-        return "spring-cloud-kid-consumer";
+        //指明熔断拦截哪个服务：指定某个route，以告诉Zuul负责该route定义下的服务访问出问题后的熔断处理
+        return "spring-cloud-kid-producer";
     }
 
     /**
@@ -34,19 +34,18 @@ public class CustomFallbackProvider implements FallbackProvider {
     @Override
     public ClientHttpResponse fallbackResponse(String route, Throwable cause) {
         if(cause != null) {
-            String causeMsg = cause.getMessage();
             LOGGER.error("降级收到来自" + route + "的服务异常：" + cause);
-            return new ThrowableClientHttpResponse(causeMsg);
+            return new ThrowableClientHttpResponse(cause);
         }
         return null;
     }
 
     private static class ThrowableClientHttpResponse implements ClientHttpResponse {
 
-        private String causeMsg;
+        private Throwable cause;
 
-        public ThrowableClientHttpResponse(String causeMsg) {
-            this.causeMsg = causeMsg;
+        public ThrowableClientHttpResponse(Throwable cause) {
+            this.cause = cause;
         }
 
         @Override
@@ -71,7 +70,7 @@ public class CustomFallbackProvider implements FallbackProvider {
 
         @Override
         public InputStream getBody() throws IOException {
-            return new ByteArrayInputStream(causeMsg.getBytes());
+            return new ByteArrayInputStream(("服务不可用：" + cause.getMessage()).getBytes());
         }
 
         @Override

@@ -1,5 +1,6 @@
 package com.allen.spring.cloud.producer.controller;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class HelloController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(HelloController.class);
 
-    @Value("${spring.hello}")
+    //@Value("${spring.hello}")
     private String hello;
 
     @Autowired
@@ -34,7 +35,11 @@ public class HelloController {
             e.printStackTrace();
         }
         LOGGER.info(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + " request parameter is : " + name);
-        return "Hello " + name + ", this is the first message. And config is " + hello;
+        String result = "Hello " + name + ", this is the first message. ";
+        if(StringUtils.isNotBlank(hello)) {
+            result += "And config is " + hello;
+        }
+        return result;
     }
 
     @RequestMapping("/service_info")
