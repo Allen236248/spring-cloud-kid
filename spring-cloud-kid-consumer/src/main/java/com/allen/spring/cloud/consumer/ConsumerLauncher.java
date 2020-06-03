@@ -1,10 +1,13 @@
 package com.allen.spring.cloud.consumer;
 
+import com.allen.spring.cloud.consumer.configuration.HystrixConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
+import org.springframework.cloud.netflix.ribbon.RibbonClients;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -30,6 +33,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableFeignClients("com.allen.spring.cloud.producer")
 @ComponentScan({"com.allen.spring.cloud.consumer", "com.allen.spring.cloud.producer"})
 @SpringBootApplication
+@RibbonClient(name = "spring-cloud-kid-producer", configuration = HystrixConfiguration.class)
 public class ConsumerLauncher {
 
     public static void main(String...args) {
