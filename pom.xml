@@ -27,7 +27,7 @@
     </modules>
 
     <properties>
-        <sck.producer.interface.version>1.0-SNAPSHOT</sck.producer.interface.version>
+        <sck.version>1.0-SNAPSHOT</sck.version>
     </properties>
 
     <dependencyManagement>
@@ -42,7 +42,12 @@
             <dependency>
                 <groupId>com.allen.spring.cloud</groupId>
                 <artifactId>spring-cloud-kid-producer-interface</artifactId>
-                <version>${sck.producer.interface.version}</version>
+                <version>${sck.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.allen.spring.cloud</groupId>
+                <artifactId>spring-cloud-kid-monitor</artifactId>
+                <version>${sck.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

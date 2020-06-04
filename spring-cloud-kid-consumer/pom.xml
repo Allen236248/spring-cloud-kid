@@ -24,6 +24,10 @@
             <groupId>com.allen.spring.cloud</groupId>
             <artifactId>spring-cloud-kid-producer-interface</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.allen.spring.cloud</groupId>
+            <artifactId>spring-cloud-kid-monitor</artifactId>
+        </dependency>
         <!-- 支持Hystrix Dashboard -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -31,7 +31,7 @@ import org.springframework.web.client.RestTemplate;
  * EnableDiscoveryClient 服务发现注册
  */
 @EnableFeignClients("com.allen.spring.cloud.producer")
-@ComponentScan({"com.allen.spring.cloud.consumer", "com.allen.spring.cloud.producer"})
+@ComponentScan({"com.allen.spring.cloud"})
 @SpringBootApplication
 @RibbonClient(name = "spring-cloud-kid-producer", configuration = HystrixConfiguration.class)
 public class ConsumerLauncher {
