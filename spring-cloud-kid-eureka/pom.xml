@@ -16,6 +16,11 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
+        <!-- 在进行服务从Eureka迁移到Nacos时需要 -->
+        <!--<dependency>-->
+            <!--<groupId>com.allen.spring.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-kid-nacos-eureka-proxy</artifactId>-->
+        <!--</dependency>-->
     </dependencies>
 
 </project>

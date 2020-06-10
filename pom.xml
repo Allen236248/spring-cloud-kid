@@ -24,6 +24,7 @@
         <module>spring-cloud-kid-producer-interface</module>
         <module>spring-cloud-kid-monitor</module>
         <module>spring-cloud-kid-config</module>
+        <module>spring-cloud-kid-nacos-proxy</module>
     </modules>
 
     <properties>
@@ -48,6 +49,27 @@
                 <groupId>com.allen.spring.cloud</groupId>
                 <artifactId>spring-cloud-kid-monitor</artifactId>
                 <version>${sck.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.allen.spring.cloud</groupId>
+                <artifactId>spring-cloud-kid-nacos-eureka-proxy</artifactId>
+                <version>${sck.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <version>0.2.2.RELEASE</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.alibaba.nacos</groupId>
+                        <artifactId>nacos-client</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-client</artifactId>
+                <version>1.2.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
