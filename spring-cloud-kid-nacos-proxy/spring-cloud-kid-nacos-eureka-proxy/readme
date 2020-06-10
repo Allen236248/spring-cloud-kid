@@ -1,0 +1,2 @@
+实现注册中心从Eureka平滑迁移到Nacos
+参考：https://github.com/inacos/spring-cloud-nacos
