@@ -7,10 +7,8 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
-import org.springframework.cloud.netflix.ribbon.RibbonClients;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
 @EnableHystrixDashboard
@@ -30,8 +28,7 @@ import org.springframework.web.client.RestTemplate;
  * 不需要在FeignClient的interface上使用 @HystrixCommand，已隐含 EnableFeignClients 负载均衡客户端
  * EnableDiscoveryClient 服务发现注册
  */
-@EnableFeignClients("com.allen.spring.cloud.producer")
-@ComponentScan({"com.allen.spring.cloud"})
+@EnableFeignClients
 @SpringBootApplication
 @RibbonClient(name = "spring-cloud-kid-producer", configuration = HystrixConfiguration.class)
 public class ConsumerLauncher {

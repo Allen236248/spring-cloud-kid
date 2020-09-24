@@ -1,6 +1,6 @@
-package com.allen.spring.cloud.producer.hystrix;
+package com.allen.spring.cloud.consumer.service.hystrix;
 
-import com.allen.spring.cloud.producer.feign.HelloFeign;
+import com.allen.spring.cloud.consumer.service.feign.HelloFeign;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

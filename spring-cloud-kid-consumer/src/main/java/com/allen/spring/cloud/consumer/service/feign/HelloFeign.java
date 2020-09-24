@@ -1,6 +1,6 @@
-package com.allen.spring.cloud.producer.feign;
+package com.allen.spring.cloud.consumer.service.feign;
 
-import com.allen.spring.cloud.producer.hystrix.HelloHystrix;
+import com.allen.spring.cloud.consumer.service.hystrix.HelloHystrix;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

@@ -1,10 +1,7 @@
 package com.allen.spring.cloud.consumer.service.impl;
 
-import com.allen.spring.cloud.consumer.controller.HelloController;
-import com.allen.spring.cloud.producer.feign.HelloFeign;
+import com.allen.spring.cloud.consumer.service.feign.HelloFeign;
 import com.allen.spring.cloud.consumer.service.HelloService;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -21,7 +21,6 @@
         <module>spring-cloud-kid-zuul</module>
         <module>spring-cloud-kid-zipkin</module>
         <module>spring-cloud-kid-gateway</module>
-        <module>spring-cloud-kid-producer-interface</module>
         <module>spring-cloud-kid-monitor</module>
         <module>spring-cloud-kid-config</module>
         <module>spring-cloud-kid-nacos-proxy</module>
