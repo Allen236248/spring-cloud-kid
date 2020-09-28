@@ -58,9 +58,8 @@ public class AuthenticationFilter extends ZuulFilter {
 
         String token = request.getParameter("token");
         if(StringUtils.hasText(token)) {
-            context.setSendZuulResponse(true);//对请求进行路由
-            context.setResponseStatusCode(200);
-            context.set("code", 0);
+            //context.setSendZuulResponse(true);//对请求进行路由
+            //context.setResponseStatusCode(200);
             return null;
         }
 
@@ -68,7 +67,6 @@ public class AuthenticationFilter extends ZuulFilter {
         context.setSendZuulResponse(false);
         context.setResponseStatusCode(400);
         context.setResponseBody("The token is empty");
-        context.set("code", -1);
         return null;
     }
 }
